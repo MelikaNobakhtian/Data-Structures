@@ -1,0 +1,12 @@
+C:\git\DS98991\TestCommon\bin\Debug\netstandard2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\git\DS98991\TestCommon\bin\Debug\netstandard2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\git\DS98991\TestCommon\bin\Debug\netstandard2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\git\DS98991\TestCommon\bin\Debug\netstandard2.0\TestCommon.deps.json
+C:\git\DS98991\TestCommon\bin\Debug\netstandard2.0\TestCommon.dll
+C:\git\DS98991\TestCommon\bin\Debug\netstandard2.0\TestCommon.pdb
+C:\git\DS98991\TestCommon\obj\Debug\netstandard2.0\TestCommon.csprojAssemblyReference.cache
+C:\git\DS98991\TestCommon\obj\Debug\netstandard2.0\TestCommon.csproj.CoreCompileInputs.cache
+C:\git\DS98991\TestCommon\obj\Debug\netstandard2.0\TestCommon.AssemblyInfoInputs.cache
+C:\git\DS98991\TestCommon\obj\Debug\netstandard2.0\TestCommon.AssemblyInfo.cs
+C:\git\DS98991\TestCommon\obj\Debug\netstandard2.0\TestCommon.dll
+C:\git\DS98991\TestCommon\obj\Debug\netstandard2.0\TestCommon.pdb
