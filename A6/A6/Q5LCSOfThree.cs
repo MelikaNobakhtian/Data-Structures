@@ -17,9 +17,6 @@ namespace A6
         {
 
             long[,,] matchnumber = new long[seq1.Length + 1, seq2.Length + 1, seq3.Length + 1];
-            bool[] sequence1 = new bool[seq1.Length];
-            bool[] sequence2 = new bool[seq2.Length];
-            bool[] sequence3 = new bool[seq3.Length];
             for (int i = 1; i <= seq1.Length; i++)
             {
 
@@ -28,12 +25,9 @@ namespace A6
                     for (int k = 1; k <= seq3.Length; k++)
                     {
                         long countplus = 0;
-                        if (seq1[i - 1] == seq2[j - 1] && seq2[j - 1] == seq3[k - 1] && !sequence1[i - 1] && !sequence2[j - 1] && !sequence3[k - 1])
+                        if (seq1[i - 1] == seq2[j - 1] && seq2[j - 1] == seq3[k - 1])
                         {
                             countplus = 1;
-                            sequence3[k - 1] = true;
-                            sequence2[j - 1] = true;
-                            sequence1[i - 1] = true;
                         }
 
                         var a = Math.Max(Math.Max(matchnumber[i, j - 1, k], matchnumber[i - 1, j, k]), matchnumber[i - 1, j - 1, k]);
