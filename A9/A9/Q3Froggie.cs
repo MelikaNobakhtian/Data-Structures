@@ -17,41 +17,61 @@ namespace A9
         public long Solve(long initialDistance, long initialEnergy, long[] distance, long[] food)
         {
             long result = 0;
-            SimplePriorityQueue<int, long> Distance = new SimplePriorityQueue<int, long>();
-            SimplePriorityQueue<int, long> foods = new SimplePriorityQueue<int, long>();
+            Tuple<long, long>[] Distance = new Tuple<long, long>[distance.Length];
+            SimplePriorityQueue<long, long> foods = new SimplePriorityQueue<long, long>();
             int n = distance.Length;
             for (int i = 0; i < n; i++)
             {
-                Distance.Enqueue(i, initialDistance - distance[i]);
+                Distance[i]=(new Tuple<long, long>(initialDistance-distance[i],food[i]));
             }
+            QuickSort(Distance, 0, n - 1);
             long path = 0;
-            int friendhouse = 0;
+           
             for (int i = 0; i < n; i++)
             {
-                friendhouse = Distance.Dequeue();
-                path = distance[friendhouse];
-                while (initialEnergy < initialDistance - path)
+                path = Distance[i].Item1;
+                while (initialEnergy <  path)
                 {
                     if (foods.Count == 0)
                         return -1;
-                    var idx = foods.Dequeue();
-                    initialEnergy += food[idx];
+                    initialEnergy += foods.Dequeue();
                     result++;
                 }
 
-                foods.Enqueue(friendhouse, food[friendhouse] * -1);
+                foods.Enqueue(Distance[i].Item2, Distance[i].Item2* -1);
             }
 
             while (initialEnergy < initialDistance)
             {
                 if (foods.Count == 0)
                     return -1;
-                var idx = foods.Dequeue();
-                initialEnergy += food[idx];
+                initialEnergy += foods.Dequeue();
                 result++;
             }
 
             return result;
+        }
+
+        private void QuickSort( Tuple<long,long>[] a, int s, int e)
+        {
+            if (e > s)
+            {
+                var pivot = a[s].Item1;
+                int j = s;
+                for (int i = s + 1; i <= e; i++)
+                {
+                    if (a[i].Item1 < pivot)
+                    {
+                        j += 1;
+                        (a[i], a[j]) = (a[j], a[i]);
+                    }
+                }
+                (a[s], a[j]) = (a[j], a[s]);
+               
+
+                QuickSort( a, s, j - 1);
+                QuickSort( a, j + 1, e);
+            }
         }
     }
 }
