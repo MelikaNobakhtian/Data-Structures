@@ -19,21 +19,25 @@ namespace A9
             long result = 0;
             SimplePriorityQueue<int, long> Distance = new SimplePriorityQueue<int, long>();
             SimplePriorityQueue<int, long> foods = new SimplePriorityQueue<int, long>();
-            for (int i = 0; i < distance.Length; i++)
+            int n = distance.Length;
+            for (int i = 0; i < n; i++)
             {
                 Distance.Enqueue(i, initialDistance - distance[i]);
             }
-
-            for (int i = 0; i <= distance.Length; i++)
+            long path = 0;
+            int friendhouse = 0;
+            for (int i = 0; i <= n; i++)
             {
-                int friendhouse = 0;
-                long path = 0;
-                if (i != distance.Length)
+               
+
+                if (i != n)
                 {
                     friendhouse = Distance.Dequeue();
 
                     path = distance[friendhouse];
                 }
+                else
+                    path = 0;
 
                 while (initialEnergy < initialDistance - path)
                 {
@@ -43,7 +47,7 @@ namespace A9
                     initialEnergy += food[idx];
                     result++;
                 }
-                if (i != distance.Length)
+                if (i != n)
                     foods.Enqueue(friendhouse, food[friendhouse] * -1);
             }
 
