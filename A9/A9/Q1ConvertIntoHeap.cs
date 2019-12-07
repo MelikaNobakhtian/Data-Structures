@@ -12,20 +12,20 @@ namespace A9
         public override string Process(string inStr) =>
             TestTools.Process(inStr, (Func<long[], Tuple<long, long>[]>)Solve);
 
-       
+
 
         public Tuple<long, long>[] Solve(long[] array)
         {
             List<Tuple<long, long>> swaps = new List<Tuple<long, long>>();
             int last = array.Length / 2;
             for (int i = last; i >= 0; i--)
-                    SiftDown(i, array, swaps);
-          
-           
-            return swaps.ToArray();       
+                SiftDown(i, array, swaps);
+
+
+            return swaps.ToArray();
         }
 
-        public void SiftDown(int i, long[] heap,List<Tuple<long,long>> swaps)
+        public void SiftDown(int i, long[] heap, List<Tuple<long, long>> swaps)
         {
             int minindex = i;
             int leftchild;
@@ -46,7 +46,7 @@ namespace A9
             {
                 (heap[i], heap[minindex]) = (heap[minindex], heap[i]);
                 swaps.Add(new Tuple<long, long>(i, minindex));
-                SiftDown(minindex, heap,swaps);
+                SiftDown(minindex, heap, swaps);
             }
 
         }

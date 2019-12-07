@@ -16,25 +16,25 @@ namespace A9
             Tuple<long, long>[] jobs = new Tuple<long, long>[jobDuration.Length];
             long[] threadstime = new long[threadCount];
             long[] threads = new long[threadCount];
-            for(int i = 0; i < threadCount; i++)
+            for (int i = 0; i < threadCount; i++)
             {
                 threadstime[i] = jobDuration[i];
                 jobs[i] = new Tuple<long, long>(i, 0);
                 threads[i] = i;
             }
             QuickSort(threads, threadstime, 0, (int)threadCount - 1);
-            for(int i = (int)threadCount; i < jobDuration.Length; i++)
+            for (int i = (int)threadCount; i < jobDuration.Length; i++)
             {
                 jobs[i] = new Tuple<long, long>(threads[0], threadstime[0]);
                 ChangePriority(0, threadstime[0] + jobDuration[i], threadstime, threads);
             }
 
             return jobs;
-            
+
 
         }
 
-        public void ChangePriority(int i,long p,long[] heap,long[] idx)
+        public void ChangePriority(int i, long p, long[] heap, long[] idx)
         {
             var oldvalue = heap[i];
             heap[i] = p;
@@ -44,16 +44,16 @@ namespace A9
                 SiftUp(i, heap, idx);
         }
 
-        public void SiftUp(int i,long[] heap,long[] idx)
+        public void SiftUp(int i, long[] heap, long[] idx)
         {
-            while(i>0 && heap[(i - 1) / 2] > heap[i])
+            while (i > 0 && heap[(i - 1) / 2] > heap[i])
             {
                 (heap[i], heap[(i - 1) / 2]) = (heap[(i - 1) / 2], heap[i]);
                 (idx[i], idx[(i - 1) / 2]) = (idx[(i - 1) / 2], idx[i]);
             }
         }
 
-        public void SiftDown(int i, long[] heap,long[] idx)
+        public void SiftDown(int i, long[] heap, long[] idx)
         {
             int minindex = i;
             int leftchild;
@@ -74,7 +74,7 @@ namespace A9
             {
                 (heap[i], heap[minindex]) = (heap[minindex], heap[i]);
                 (idx[i], idx[minindex]) = (idx[minindex], idx[i]);
-                SiftDown(minindex, heap,idx);
+                SiftDown(minindex, heap, idx);
             }
 
         }
