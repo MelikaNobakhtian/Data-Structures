@@ -26,19 +26,10 @@ namespace A9
             }
             long path = 0;
             int friendhouse = 0;
-            for (int i = 0; i <= n; i++)
+            for (int i = 0; i < n; i++)
             {
-               
-
-                if (i != n)
-                {
-                    friendhouse = Distance.Dequeue();
-
-                    path = distance[friendhouse];
-                }
-                else
-                    path = 0;
-
+                friendhouse = Distance.Dequeue();
+                path = distance[friendhouse];
                 while (initialEnergy < initialDistance - path)
                 {
                     if (foods.Count == 0)
@@ -47,8 +38,17 @@ namespace A9
                     initialEnergy += food[idx];
                     result++;
                 }
-                if (i != n)
-                    foods.Enqueue(friendhouse, food[friendhouse] * -1);
+
+                foods.Enqueue(friendhouse, food[friendhouse] * -1);
+            }
+
+            while (initialEnergy < initialDistance)
+            {
+                if (foods.Count == 0)
+                    return -1;
+                var idx = foods.Dequeue();
+                initialEnergy += food[idx];
+                result++;
             }
 
             return result;
