@@ -21,10 +21,8 @@ namespace E2a
 
         public void Dfs(long n,long[] Bst,int idx)
         {
-            if (idx>= n || Bst[idx] == -1)
-            {              
+            if (idx >= n || Bst[idx] == -1)
                 return;
-            }
             Dfs(n, Bst, 2 * idx + 1);
             result.Add(Bst[idx]);
             Dfs(n, Bst, 2 * idx + 2);
