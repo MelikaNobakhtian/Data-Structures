@@ -9,7 +9,7 @@ namespace E2a.Tests
     [TestClass()]
     public class GradedTests
     {
-        [TestMethod(), Timeout(2100)]
+        [TestMethod(), Timeout(2200)]
         public void SolveTest_Q1BSTInOrderTraverse()
         {
             //Assert.Inconclusive();
@@ -17,7 +17,7 @@ namespace E2a.Tests
         }
 
 
-        [TestMethod(), Timeout(1350)]
+        [TestMethod(), Timeout(1600)]
         public void SolveTest_Q2ThreeChildrenMinHeap()
         {
            // Assert.Inconclusive();
