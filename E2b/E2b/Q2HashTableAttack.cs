@@ -21,53 +21,54 @@ namespace E2b
         
         public string[] Solve(long bucketCount)
         {
-            long size = 9 * bucketCount / 10;
-            List<string> result = new List<string>();
-            Random rnd = new Random();
-            var idx = rnd.Next(0, 25);
-            var hash = GetBucketNumber(CapChars[idx].ToString(),bucketCount);
-            for (int i = 0; i < 26 && result.Count < size; i++)
-            {
-                //string str1 = CapChars[i].ToString();
-                if (hash == GetBucketNumber(CapChars[i].ToString(), bucketCount))
-                    result.Add(LowChars[i].ToString());
-                if (hash == GetBucketNumber(LowChars[i].ToString(), bucketCount))
-                    result.Add(CapChars[i].ToString());
-            }
-            for (int i = 0; i < 10 && result.Count < size; i++)
-            {
-               
-                if (hash == GetBucketNumber(Numbers[i].ToString(), bucketCount))
-                    result.Add(Numbers[i].ToString());
-            }
-            if (result.Count == size)
-                return result.ToArray();
+            //long size = 9 * bucketCount / 10;
+            //List<string> result = new List<string>();
+            //Random rnd = new Random();
+            //var idx = rnd.Next(0, 25);
+            //var hash = GetBucketNumber(CapChars[idx].ToString(),bucketCount);
+            //for (int i = 0; i < 26 && result.Count < size; i++)
+            //{
+            //    //string str1 = CapChars[i].ToString();
+            //    if (hash == GetBucketNumber(CapChars[i].ToString(), bucketCount))
+            //        result.Add(LowChars[i].ToString());
+            //    if (hash == GetBucketNumber(LowChars[i].ToString(), bucketCount))
+            //        result.Add(CapChars[i].ToString());
+            //}
+            //for (int i = 0; i < 10 && result.Count < size; i++)
+            //{
 
-            for(int i = 0; i < 26 && result.Count<size; i++)
-            {
-                for(int j = i; j < 26 && result.Count<size; j++)
-                {
-                    string test = CapChars[i].ToString() + CapChars[j].ToString();
-                    if (hash == GetBucketNumber(test, bucketCount))
-                        result.Add(test);
-                    string test1 = LowChars[i].ToString() + LowChars[j].ToString();
-                    if (hash == GetBucketNumber(test1, bucketCount))
-                        result.Add(test1);
-                }
-            }
-           
+            //    if (hash == GetBucketNumber(Numbers[i].ToString(), bucketCount))
+            //        result.Add(Numbers[i].ToString());
+            //}
+            //if (result.Count == size)
+            //    return result.ToArray();
 
-            for (int i = 0; i < 10 && result.Count < size; i++)
-            {
-                for (int j = i; j < 10 && result.Count < size; j++)
-                {
-                    string test = Numbers[i].ToString() + Numbers[j].ToString();
-                    if (hash == GetBucketNumber(test, bucketCount))
-                        result.Add(test);
-                }
-            }
+            //for(int i = 0; i < 26 && result.Count<size; i++)
+            //{
+            //    for(int j = i; j < 26 && result.Count<size; j++)
+            //    {
+            //        string test = CapChars[i].ToString() + CapChars[j].ToString();
+            //        if (hash == GetBucketNumber(test, bucketCount))
+            //            result.Add(test);
+            //        string test1 = LowChars[i].ToString() + LowChars[j].ToString();
+            //        if (hash == GetBucketNumber(test1, bucketCount))
+            //            result.Add(test1);
+            //    }
+            //}
 
-            return result.ToArray();
+
+            //for (int i = 0; i < 10 && result.Count < size; i++)
+            //{
+            //    for (int j = i; j < 10 && result.Count < size; j++)
+            //    {
+            //        string test = Numbers[i].ToString() + Numbers[j].ToString();
+            //        if (hash == GetBucketNumber(test, bucketCount))
+            //            result.Add(test);
+            //    }
+            //}
+
+            //return result.ToArray();
+            throw new NotImplementedException();
 
         }
 
