@@ -18,58 +18,48 @@ namespace E2b
             long bucketCount = long.Parse(inStr);
             return string.Join("\n", Solve(bucketCount));
         }
-
+        
         public string[] Solve(long bucketCount)
         {
             long size = 9 * bucketCount / 10;
             List<string> result = new List<string>();
             Random rnd = new Random();
             var idx = rnd.Next(0, 25);
-            var str = CapChars[idx].ToString();
-            var hash = GetBucketNumber(str, bucketCount);
+            var hash = GetBucketNumber(CapChars[idx].ToString(),bucketCount);
             for (int i = 0; i < 26 && result.Count < size; i++)
             {
-                string str1 = CapChars[i].ToString();
-                if (hash == GetBucketNumber(str1, bucketCount))
-                    result.Add(str1);
-            }
-            for (int i = 0; i < 26 && result.Count < size; i++)
-            {
-                string str1 = CapChars[i].ToString();
-                if (hash == GetBucketNumber(str1, bucketCount))
-                    result.Add(str1);
+                //string str1 = CapChars[i].ToString();
+                if (hash == GetBucketNumber(CapChars[i].ToString(), bucketCount))
+                    result.Add(LowChars[i].ToString());
+                if (hash == GetBucketNumber(LowChars[i].ToString(), bucketCount))
+                    result.Add(CapChars[i].ToString());
             }
             for (int i = 0; i < 10 && result.Count < size; i++)
             {
-                string str1 = Numbers[i].ToString();
-                if (hash == GetBucketNumber(str1, bucketCount))
-                    result.Add(str1);
+               
+                if (hash == GetBucketNumber(Numbers[i].ToString(), bucketCount))
+                    result.Add(Numbers[i].ToString());
             }
             if (result.Count == size)
                 return result.ToArray();
 
             for(int i = 0; i < 26 && result.Count<size; i++)
             {
-                for(int j = 0; j < 26 && result.Count<size; j++)
+                for(int j = i; j < 26 && result.Count<size; j++)
                 {
                     string test = CapChars[i].ToString() + CapChars[j].ToString();
                     if (hash == GetBucketNumber(test, bucketCount))
                         result.Add(test);
+                    string test1 = LowChars[i].ToString() + LowChars[j].ToString();
+                    if (hash == GetBucketNumber(test1, bucketCount))
+                        result.Add(test1);
                 }
             }
-            for (int i = 0; i < 26 && result.Count < size; i++)
-            {
-                for (int j = 0; j < 26 && result.Count < size; j++)
-                {
-                    string test = LowChars[i].ToString() + LowChars[j].ToString();
-                    if (hash == GetBucketNumber(test, bucketCount))
-                        result.Add(test);
-                }
-            }
+           
 
             for (int i = 0; i < 10 && result.Count < size; i++)
             {
-                for (int j = 0; j < 10 && result.Count < size; j++)
+                for (int j = i; j < 10 && result.Count < size; j++)
                 {
                     string test = Numbers[i].ToString() + Numbers[j].ToString();
                     if (hash == GetBucketNumber(test, bucketCount))
@@ -77,43 +67,7 @@ namespace E2b
                 }
             }
 
-            while (result.Count < size)
-            {
-                string a=new string(Enumerable.Repeat(CapChars, 3).Select(s => s[rnd.Next(s.Length)]).ToArray());
-                if (hash == GetBucketNumber(a, bucketCount) && !result.Contains(a))
-                    result.Add(a);
-                if (result.Count < size)
-                {
-                    string b= new string(Enumerable.Repeat(LowChars, 3).Select(s => s[rnd.Next(s.Length)]).ToArray());
-                    if (hash == GetBucketNumber(b, bucketCount) && !result.Contains(b))
-                        result.Add(b);
-                }
-
-                if (result.Count < size)
-                {
-                    string c = new string(Enumerable.Repeat(Numbers, 3).Select(s => s[rnd.Next(s.Length)]).ToArray());
-                    if (hash == GetBucketNumber(c, bucketCount) && !result.Contains(c))
-                        result.Add(c);
-                }
-
-            }
-
             return result.ToArray();
-            //for (int i = 0; i < 25 && result.Count < size; i++)
-            //{
-            //    string str1 =$"{CapChars[i]}{CapChars[i+1]}";
-            //    if (hash == GetBucketNumber(str1, bucketCount))
-            //        result.Add(str1);
-            //}
-            //for (int i = 0; i < 25 && result.Count < size; i++)
-            //{
-            //    string str1 = $"{LowChars[i]}{LowChars[i + 1]}";
-            //    if (hash == GetBucketNumber(str1, bucketCount))
-            //        result.Add(str1);
-            //}
-
-            //return result.ToArray();
-
 
         }
 
