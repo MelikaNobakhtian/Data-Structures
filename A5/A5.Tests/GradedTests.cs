@@ -32,7 +32,7 @@ namespace A5.Tests
         {
             RunTest(new Q5OrganizingLottery("TD5"));
         }
-        [TestMethod(),/* Timeout(1000)*/]
+        [TestMethod(), Timeout(1000)]
         public void SolveTest_Q6ClosestPoints()
         {
             RunTest(new Q6ClosestPoints ("TD6"));

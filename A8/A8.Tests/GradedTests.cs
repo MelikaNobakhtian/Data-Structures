@@ -19,7 +19,7 @@ namespace A8.Tests
             RunTest(new Q2TreeHeight("TD2"));
         }
 
-        [TestMethod(), /*Timeout(500)*/]
+        [TestMethod(), Timeout(500)]
         public void SolveTest_Q3PacketProcessing()
         {
             RunTest(new Q3PacketProcessing("TD3"));

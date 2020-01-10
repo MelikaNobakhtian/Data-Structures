@@ -24,8 +24,8 @@ namespace A4.Tests
         {
             RunTest(new Q3MaximizingOnlineAdRevenue("TD3"));
         }
-        //, Timeout(200)
-        [TestMethod()]
+        //
+        [TestMethod(), Timeout(200)]
         public void SolveTest_Q4CollectingSignatures()
         {
             RunTest(new Q4CollectingSignatures("TD4"));
